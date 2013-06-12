@@ -18,6 +18,18 @@ Have fun!
 
 This repo is used by [Tacape](https://github.com/lucasmartins/tacape)
 
+Contribute
+==========
+
+Have any scripts laying around that you could be sharing? 
+
+Just fork [Tacape Tools](https://github.com/lucasmartins/tacape-tools), add your tool, and make a pull request.
+
+Support
+=======
+
+This is an opensource project so don't expect premium support, but don't be shy, post any troubles you're having in the [Issues](https://github.com/lucasmartins/tacape/issues) page and we'll do what we can to help.
+
 License
 =======
 
