@@ -1,4 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/lucasmartins/tacape-tools.png)](https://codeclimate.com/github/lucasmartins/tacape-tools)
+[![Code Climate](https://codeclimate.com/github/lucasmartins/tacape-tools.png)](https://codeclimate.com/github/lucasmartins/tacape-tools) [![Dependency Status](https://gemnasium.com/lucasmartins/tacape-tools.png)](https://gemnasium.com/lucasmartins/tacape-tools)
+
 
 Tacape Tools
 ============
