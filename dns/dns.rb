@@ -1,6 +1,5 @@
 #coding: utf-8
 require 'fiber'
-require 'celluloid/autostart'
 
 module Tacape
   module Tools
@@ -53,7 +52,6 @@ module Tacape
         end
         return clear_names
       end
-
       def search_names(output)
         names.each do |n|
           if n!=nil && n!=''
