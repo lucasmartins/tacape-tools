@@ -52,6 +52,8 @@ module Tacape
         end
         return clear_names
       end
+      
+      private
       def search_names(output)
         names.each do |n|
           if n!=nil && n!=''
