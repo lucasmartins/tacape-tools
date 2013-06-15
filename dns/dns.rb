@@ -1,5 +1,6 @@
 #coding: utf-8
 require 'fiber'
+require 'celluloid/autostart'
 
 module Tacape
   module Tools
@@ -26,32 +27,48 @@ module Tacape
       desc 'check_names NAMES_FILE OUTPUT_FILE',I18n.t('tools.dns.check_names.desc')
       def check_names(names_file=nil,output_file=nil)
         load_config
+
         names_file=@config['default_names_file'] if names_file==nil
         output_file=@config['default_output_file'] if output_file==nil
         suffixes=@config['default_suffixes']
 
+        names = get_names(names_file)
+
+        puts names.inspect
+        `rm #{output_file}`
+        output = File.new(output_file,'w')
+
+        search_names(output)
+
+        output.close
+      end
+
+      private
+      def get_names(names_file)
         file = File.read(names_file)
         names = file.split("\n")
         clear_names = []
         names.each do |n|
           clear_names.push(n.gsub("\r",'').gsub(' ',''))
         end
-        names = clear_names
-        puts names.inspect
-        `rm #{output_file}`
-        output = File.new(output_file,'w')
+        return clear_names
+      end
 
+      def search_names(output)
         names.each do |n|
           if n!=nil && n!=''
             #puts n.inspect
             all_available=true
             print_string = "#{n.upcase} \t -> "
             suffixes.each do |s|
+=begin
               fiber_result=Fiber.new do
                 lookup_result = `nslookup #{n.downcase}#{s}`.split("\n").last
                 Fiber.yield lookup_result
               end
               result=fiber_result.resume
+=end
+              result = `nslookup #{n.downcase}#{s}`.split("\n").last
               if result.include? 'NXDOMAIN'
                 print_string+="[#{s}:#{C_MARK}] "
               else
@@ -71,8 +88,6 @@ module Tacape
             puts "Ignoring blank line..."
           end
         end
-
-        output.close
       end
 
     end

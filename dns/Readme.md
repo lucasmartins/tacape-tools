@@ -15,4 +15,4 @@ facebook
 mycoolname
 ```
 
-Run `tacape dns check_names` to get the results for DNS availability, you'll get it in the stdout and into a file called 'output.txt'.
+Run `tacape dns check_names` to get the results in the stdout and into a file called 'output.txt'.
