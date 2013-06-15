@@ -37,7 +37,7 @@ module Tacape
         `rm #{output_file}`
         output = File.new(output_file,'w')
 
-        search_names(output)
+        search_names(names,suffixes,output)
 
         output.close
       end
@@ -53,15 +53,18 @@ module Tacape
         return clear_names
       end
 
-      private
-      def search_names(output)
+      def search_names(names,suffixes,output)
         names.each do |n|
           if n!=nil && n!=''
             #puts n.inspect
             all_available=true
             print_string = "#{n.upcase} \t -> "
             suffixes.each do |s|
-              result = `nslookup #{n.downcase}#{s}`.split("\n").last
+              fiber_result=Fiber.new do
+                lookup_result = `nslookup #{n.downcase}#{s}`.split("\n").last
+                Fiber.yield lookup_result
+              end
+              result=fiber_result.resume
               if result.include? 'NXDOMAIN'
                 print_string+="[#{s}:#{C_MARK}] "
               else
