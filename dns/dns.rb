@@ -52,7 +52,7 @@ module Tacape
         end
         return clear_names
       end
-      
+
       private
       def search_names(output)
         names.each do |n|
@@ -61,13 +61,6 @@ module Tacape
             all_available=true
             print_string = "#{n.upcase} \t -> "
             suffixes.each do |s|
-=begin
-              fiber_result=Fiber.new do
-                lookup_result = `nslookup #{n.downcase}#{s}`.split("\n").last
-                Fiber.yield lookup_result
-              end
-              result=fiber_result.resume
-=end
               result = `nslookup #{n.downcase}#{s}`.split("\n").last
               if result.include? 'NXDOMAIN'
                 print_string+="[#{s}:#{C_MARK}] "
