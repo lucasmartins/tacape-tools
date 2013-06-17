@@ -42,7 +42,7 @@ module Tacape
       desc 'list', I18n.t('tools.gitrepo.list.desc')
       def list
         load_info
-        `ssh #{@ssh_hostpath} "ls --format single-column #{@repo_dir}"`
+        puts `ssh #{@ssh_hostpath} "cd #{@repos_dir} && ls --format single-column |grep .git"`
       end
 
       private
