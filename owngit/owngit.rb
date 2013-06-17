@@ -45,6 +45,13 @@ module Tacape
         puts `ssh #{@ssh_hostpath} "cd #{@repos_dir} && ls --format single-column |grep .git"`
       end
 
+      desc 'get', I18n.t('tools.gitrepo.get.desc')
+      def get(remote_repo_name)
+        load_info
+        @git_remote = "#{@ssh_hostpath}:/home/#{@username}/#{@repos_dir}/#{remote_repo_name.gsub('.git','')}.git"
+        `git clone #{@git_remote}`
+      end
+
       private
         def load_info
           load_config
