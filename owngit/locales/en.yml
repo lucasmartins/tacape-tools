@@ -2,3 +2,9 @@ en:
   tools:
     owngit:
       title: 'OwnGit'
+      add:
+        desc: 'Adds the current folder to your remote repositories'
+      get:
+        desc: 'Clones a repository from your remote'
+      list:
+        desc: 'Lists your remote repositories'

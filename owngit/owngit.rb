@@ -22,7 +22,7 @@ module Tacape
         
       end
 
-      desc 'add',I18n.t('tools.gitrepo.add.desc')
+      desc 'add',I18n.t('tools.owngit.add.desc')
       def add(remote_repo_name=nil)
         remote_repo_name = File.basename(Dir.getwd) if remote_repo_name==nil
         load_info
@@ -34,18 +34,18 @@ module Tacape
         end
 
         `git remote add #{@host_shortname} #{@git_remote}`
-        puts I18n.t('tools.gitrepo.bless.creating_remote_msg')
+        puts I18n.t('tools.owngit.bless.creating_remote_msg')
         `ssh #{@ssh_hostpath} "cd && mkdir -p #{@repos_dir} && cd #{@repos_dir} && git init #{remote_repo_name}.git --bare"`
         puts "Now you can:\ngit add readme.md\ngit push -u #{@host_shortname} master"
       end
 
-      desc 'list', I18n.t('tools.gitrepo.list.desc')
+      desc 'list', I18n.t('tools.owngit.list.desc')
       def list
         load_info
         puts `ssh #{@ssh_hostpath} "cd #{@repos_dir} && ls --format single-column |grep .git"`
       end
 
-      desc 'get', I18n.t('tools.gitrepo.get.desc')
+      desc 'get', I18n.t('tools.owngit.get.desc')
       def get(remote_repo_name)
         load_info
         @git_remote = "#{@ssh_hostpath}:/home/#{@username}/#{@repos_dir}/#{remote_repo_name.gsub('.git','')}.git"

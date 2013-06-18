@@ -2,3 +2,9 @@
   tools:
     owngit:
       title: 'OwnGit'
+      add:
+        desc: 'Adiciona esta pasta como um repositório no servidor'
+      get:
+        desc: 'Clona um repositório do servidor para a pasta atual'
+      list: 
+        desc: 'Lista seus repositórios disponíveis no servidor'
