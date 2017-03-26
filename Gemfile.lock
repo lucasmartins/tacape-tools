@@ -3,6 +3,9 @@ GEM
   specs:
     celluloid (0.14.1)
       timers (>= 1.0.0)
+    mini_portile2 (2.1.0)
+    nokogiri (1.7.1)
+      mini_portile2 (~> 2.1.0)
     timers (1.1.0)
 
 PLATFORMS
@@ -10,3 +13,7 @@ PLATFORMS
 
 DEPENDENCIES
   celluloid
+  nokogiri
+
+BUNDLED WITH
+   1.14.6
